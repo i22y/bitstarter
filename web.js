@@ -1,12 +1,15 @@
 var express = require('express');
-var fs = require('fs');
-
+var fs = require('fs'); //ReferenceError: fs is not defined
 
 var app = express.createServer(express.logger());
-var content = fs.readFileSync('index.html', 'utf8');
 
 app.get('/', function(request, response) {
-  response.send(content.toString());
+   //    response.send('Hello World3!');
+   
+   var indexhtml = fs.readFileSync('./index.html','utf-8');
+//   var body = indexhtml;
+   response.send(indexhtml);
+
 });
 
 var port = process.env.PORT || 8080;
